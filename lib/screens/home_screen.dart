@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:viva/screens/messages.dart';
 import 'package:viva/screens/profile.dart';
+import 'package:viva/screens/saved.dart';
 import 'package:viva/widgets/suggested.dart';
 // import 'package:viva/widgets/navigation_bar.dart';
 
@@ -12,8 +14,8 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0; // keeps track of index of currently selected
   final List<Widget> _children = [
     SuggestedWidget(),
-    SuggestedWidget(),
-    SuggestedWidget(),
+    SavedWidget(),
+    MessagesWidget(),
     ProfileWidget(),
   ];
 
@@ -28,9 +30,11 @@ class _HomeScreenState extends State<HomeScreen> {
           color: Colors.white, 
           onPressed: () {}
         ),
-        title: Text(
-          'Viva',
-          style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+        title: Center(
+          child: Text(
+            'Viva',
+            style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+          ),
         ),
         elevation: 0.0,
         actions: <Widget>[
@@ -63,31 +67,36 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        // type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.blue[600],
-        unselectedItemColor: Colors.grey[700],
-        onTap: onTabTapped,
-        currentIndex: _currentIndex, // this will be set when a new tab is tapped
-        items: [
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.card_travel),
-            title: new Text('Discover'),
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.bookmark),
-            title: new Text('Saved'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.forum),
-            title: Text('Messages'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text('Profile'),
-          )
-        ],
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: Colors.black,
+          primaryColor: Theme.of(context).primaryColor,
+          textTheme: Theme.of(context).textTheme.copyWith(caption: TextStyle(color: Colors.black)),
+        ),
+        child: BottomNavigationBar(
+          selectedItemColor: Colors.blue[600],
+          unselectedItemColor: Colors.grey[700],
+          onTap: onTabTapped,
+          currentIndex: _currentIndex, // this will be set when a new tab is tapped
+          items: [
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.card_travel),
+              title: new Text('Discover'),
+            ),
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.bookmark),
+              title: new Text('Saved'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.forum),
+              title: Text('Messages'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              title: Text('Profile'),
+            )
+          ],
+        ),
       ),
     );
   }
