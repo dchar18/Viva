@@ -10,7 +10,7 @@ class SuggestedWidget extends StatefulWidget {
     Widget build(BuildContext context) {
       return Expanded(
         child: Container(
-            decoration: BoxDecoration(
+          decoration: BoxDecoration(
             color: Theme.of(context).accentColor,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30.0),
