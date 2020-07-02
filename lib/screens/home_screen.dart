@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:viva/screens/messages.dart';
-import 'package:viva/screens/profile.dart';
-import 'package:viva/screens/saved.dart';
-import 'package:viva/widgets/suggested.dart';
+import 'package:viva/screens/settings_screen.dart';
+import 'package:viva/helper/global.dart';
+import 'package:viva/widgets/widgets.dart';
 // import 'package:viva/widgets/navigation_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,41 +10,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _currentIndex = 0; // keeps track of index of currently selected
-  final List<Widget> _children = [
-    SuggestedWidget(),
-    SavedWidget(),
-    MessagesWidget(),
-    ProfileWidget(),
-  ];
+  Global constants = new Global();
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          iconSize: 30.0,
-          color: Colors.white, 
-          onPressed: () {}
-        ),
-        title: Center(
-          child: Text(
-            'Viva',
-            style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
-          ),
-        ),
-        elevation: 0.0,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search), 
-            iconSize: 30.0,
-            color: Colors.white,
-            onPressed: () {},
-          ),
-        ],
-      ),
+      appBar: appBarMain(context, 'Viva'),
       body: Column(
         children: <Widget>[
           Expanded(
@@ -59,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Column(
                 children: <Widget>[
-                  _children[_currentIndex],
+                  constants.views[constants.currViewIndex],
                 ],
               ),
               // child: _children[_currentIndex],
@@ -71,13 +42,16 @@ class _HomeScreenState extends State<HomeScreen> {
         data: Theme.of(context).copyWith(
           canvasColor: Colors.black,
           primaryColor: Theme.of(context).primaryColor,
-          textTheme: Theme.of(context).textTheme.copyWith(caption: TextStyle(color: Colors.black)),
+          textTheme: Theme.of(context)
+              .textTheme
+              .copyWith(caption: TextStyle(color: Colors.black)),
         ),
         child: BottomNavigationBar(
           selectedItemColor: Colors.blue[600],
           unselectedItemColor: Colors.grey[700],
           onTap: onTabTapped,
-          currentIndex: _currentIndex, // this will be set when a new tab is tapped
+          currentIndex: constants
+              .currViewIndex, // this will be set when a new tab is tapped
           items: [
             BottomNavigationBarItem(
               icon: new Icon(Icons.card_travel),
@@ -101,9 +75,9 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void onTabTapped(int index){
+  void onTabTapped(int index) {
     setState(() {
-      _currentIndex = index;
+      constants.currViewIndex = index;
     });
   }
 }

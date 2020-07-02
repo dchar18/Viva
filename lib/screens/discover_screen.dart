@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class SuggestedWidget extends StatefulWidget {
+class DiscoverScreen extends StatefulWidget {
   @override
-  _SuggestedWidgetState createState() => _SuggestedWidgetState();
+  _DiscoverScreenState createState() => _DiscoverScreenState();
 }
 
-class _SuggestedWidgetState extends State<StatefulWidget> {
+class _DiscoverScreenState extends State<DiscoverScreen> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -13,7 +13,7 @@ class _SuggestedWidgetState extends State<StatefulWidget> {
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(vertical: 10),
         child: Center(
-          child: Text('Suggested'),
+          child: Text('Discover'),
         ),
       ),
     );

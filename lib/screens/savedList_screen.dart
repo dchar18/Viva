@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class SuggestedWidget extends StatefulWidget {
+class SavedListScreen extends StatefulWidget {
   @override
-  _SuggestedWidgetState createState() => _SuggestedWidgetState();
+  _SavedListScreenState createState() => _SavedListScreenState();
 }
 
-class _SuggestedWidgetState extends State<StatefulWidget> {
+class _SavedListScreenState extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -13,7 +13,7 @@ class _SuggestedWidgetState extends State<StatefulWidget> {
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(vertical: 10),
         child: Center(
-          child: Text('Suggested'),
+          child: Text('Saved'),
         ),
       ),
     );
