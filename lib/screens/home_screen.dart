@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      appBar: appBarMain(context, 'Viva'),
+      appBar: appBarMain(context, constants.titles[constants.currViewIndex]),
       body: Column(
         children: <Widget>[
           Expanded(

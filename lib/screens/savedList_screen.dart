@@ -6,6 +6,7 @@ class SavedListScreen extends StatefulWidget {
 }
 
 class _SavedListScreenState extends State<StatefulWidget> {
+  String title = 'Saved Lists';
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -13,7 +14,7 @@ class _SavedListScreenState extends State<StatefulWidget> {
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(vertical: 10),
         child: Center(
-          child: Text('Saved'),
+          child: Text(title),
         ),
       ),
     );

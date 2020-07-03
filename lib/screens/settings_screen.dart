@@ -7,12 +7,31 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  String title = 'Settings';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      appBar: appBarMain(context, 'Settings'),
-      body: Container(),
+      appBar: appBarMain(context, title),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                color: Theme.of(context).accentColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30.0),
+                  topRight: Radius.circular(30.0),
+                ),
+              ),
+              child: Center(
+                child: Text('Settings'),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

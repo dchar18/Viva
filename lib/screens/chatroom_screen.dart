@@ -8,8 +8,25 @@ class ChatRoomScreen extends StatefulWidget {
 class _ChatRoomScreenState extends State<ChatRoomScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Chats'),
+    return Expanded(
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(vertical: 10),
+        child: Center(
+          child: Text('Chats'),
+        ),
+      ),
     );
+  }
+}
+
+class ChatTile extends StatelessWidget {
+  final String name;
+  final String chatroomID;
+  ChatTile(this.name, this.chatroomID);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

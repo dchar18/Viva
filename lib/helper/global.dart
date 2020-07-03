@@ -12,5 +12,7 @@ class Global {
     ProfileScreen(),
   ];
 
+  final List<String> titles = ["Discover", "Saved Lists", "Chats", "Profile"];
+
   int currViewIndex = 0; // keeps track of index of currently selected
 }
