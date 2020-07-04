@@ -19,14 +19,11 @@ class _AuthenticateState extends State<Authenticate> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Chats'),
-    );
-    // if (showSignIn) {
-    //   return SignInScreen(toggleView);
-    // } else {
-    //   return SignUpScreen(toggleView);
-    // }
+    if (showSignIn) {
+      return SignInScreen(toggleView);
+    } else {
+      return SignUpScreen(toggleView);
+    }
   }
 }
 // Reference 1 - end

@@ -3,11 +3,6 @@ import 'package:viva/screens/settings_screen.dart';
 
 Widget appBarMain(BuildContext context, String title) {
   return AppBar(
-    // leading: IconButton(
-    //     icon: Icon(Icons.menu),
-    //     iconSize: 30.0,
-    //     color: Colors.white,
-    //     onPressed: () {}),
     title: Text(
       title,
       style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
@@ -37,5 +32,26 @@ InputDecoration inputDecoration(String hintText) {
     enabledBorder: UnderlineInputBorder(
       borderSide: BorderSide(color: Colors.white),
     ),
+  );
+}
+
+TextStyle standardStyle(double textSize) {
+  return TextStyle(
+    color: Colors.white,
+    fontSize: textSize,
+  );
+}
+
+Container settingsItem(String text, Color color, context) {
+  return Container(
+    alignment: Alignment.center,
+    width: MediaQuery.of(context).size.width,
+    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+    decoration:
+        BoxDecoration(color: color, borderRadius: BorderRadius.circular(30)),
+    child: Text(text,
+        style: color == Colors.white70
+            ? TextStyle(color: Colors.grey[700], fontSize: 20)
+            : standardStyle(20)),
   );
 }

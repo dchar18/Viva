@@ -33,8 +33,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               SizedBox(height: 100),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => SignInScreen()));
+                  // Navigator.pushReplacement(context,
+                  // MaterialPageRoute(builder: (context) => SignInScreen()));
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -47,8 +47,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   child: Text(
                     'Sign In',
                     style: TextStyle(
+                      color: Colors.white,
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -56,8 +56,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               SizedBox(height: 15),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => SignUpScreen()));
+                  // Navigator.pushReplacement(context,
+                  // MaterialPageRoute(builder: (context) => SignUpScreen()));
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -70,8 +70,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   child: Text(
                     'Sign Up',
                     style: TextStyle(
+                      color: Colors.white,
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

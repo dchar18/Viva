@@ -41,14 +41,14 @@ class _MyAppState extends State<MyApp> {
         accentColor: Colors.blue[300],
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: WelcomeScreen(),
-      // home: isLoggedIn != null
-      //     ? (isLoggedIn ? HomeScreen() : Authenticate())
-      //     : Container(
-      //         child: Center(
-      //           child: Authenticate(),
-      //         ),
-      //       ),
+      // home: WelcomeScreen(),
+      home: isLoggedIn != null
+          ? (isLoggedIn ? HomeScreen() : Authenticate())
+          : Container(
+              child: Center(
+                child: Authenticate(),
+              ),
+            ),
     );
   }
 }

@@ -1,10 +1,17 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:viva/helper/sharedPreference_functions.dart';
 import 'package:viva/screens/forgotPassword_screen.dart';
 import 'package:viva/screens/home_screen.dart';
 import 'package:viva/screens/signup_screen.dart';
+import 'package:viva/services/authentication.dart';
+import 'package:viva/services/database.dart';
 import 'package:viva/widgets/widgets.dart';
 
 class SignInScreen extends StatefulWidget {
+  final Function toggle;
+  SignInScreen(this.toggle);
+
   @override
   _SignInScreenState createState() => _SignInScreenState();
 }
@@ -13,6 +20,45 @@ class _SignInScreenState extends State<SignInScreen> {
   final formKey = GlobalKey<FormState>();
   TextEditingController emailEditingController = new TextEditingController();
   TextEditingController passwordEditingController = new TextEditingController();
+
+  AuthenticationMethods authMethods = new AuthenticationMethods();
+  DatabaseMethods databaseMethods = new DatabaseMethods();
+
+  bool isLoading =
+      false; // used to determine if loading animation should be showed
+  QuerySnapshot snapshotUserInfo;
+
+  signIn() {
+    if (formKey.currentState.validate()) {
+      String emailInput = emailEditingController.text;
+      String passwordInput = passwordEditingController.text;
+
+      // add email to shared preferences
+      Functions.saveUserEmailSharedPreference(emailInput);
+
+      // show loading icon
+      setState(() {
+        isLoading = true;
+      });
+
+      databaseMethods.getUserByEmail(emailInput).then((val) {
+        snapshotUserInfo = val;
+        Functions.saveUserNameSharedPreference(
+            snapshotUserInfo.documents[0].data["name"]);
+      });
+
+      authMethods
+          .signInWithEmailPassword(emailInput, passwordInput)
+          .then((value) {
+        if (value != null) {
+          // user exists
+          Functions.saveUserLoggedInSharedPreference(true);
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        }
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +89,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     TextFormField(
                       validator: (value) {
-                        return value.length > 8
+                        return value.length > 7
                             ? null
                             : "Please provide a valid password with 8 or more characters";
                       },
@@ -69,10 +115,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     child: Text(
                       'Forgot Password?',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                      ),
+                      style: standardStyle(15),
                     ),
                   ),
                 ),
@@ -80,9 +123,7 @@ class _SignInScreenState extends State<SignInScreen> {
               SizedBox(height: 10),
               GestureDetector(
                 onTap: () {
-                  // signIn(); // TODO
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                  signIn(); // TODO
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -103,9 +144,7 @@ class _SignInScreenState extends State<SignInScreen> {
               SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                  // signIn(); // TODO
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => SignUpScreen()));
+                  widget.toggle(); // TODO
                 },
                 child: Container(
                   alignment: Alignment.center,
