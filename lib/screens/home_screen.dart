@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:viva/screens/settings_screen.dart';
+import 'package:viva/screens/addItemScreen.dart';
 import 'package:viva/helper/global.dart';
 import 'package:viva/widgets/widgets.dart';
 // import 'package:viva/widgets/navigation_bar.dart';
@@ -11,6 +11,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Global constants = new Global();
+  // GlobalKey<ChatRoomScreen> key = new GlobalKey<ChatRoomScreen>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,24 +21,42 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).accentColor,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30.0),
-                  topRight: Radius.circular(30.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30.0),
+                topRight: Radius.circular(30.0),
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).accentColor,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30.0),
+                    topRight: Radius.circular(30.0),
+                  ),
                 ),
+                child: Column(
+                  children: <Widget>[
+                    Global.views[constants.currViewIndex],
+                  ],
+                ),
+                // child: _children[_currentIndex],
               ),
-              child: Column(
-                children: <Widget>[
-                  constants.views[constants.currViewIndex],
-                ],
-              ),
-              // child: _children[_currentIndex],
             ),
           ),
         ],
       ),
+      floatingActionButton: (constants.currViewIndex == 1)
+          ? FloatingActionButton(
+              child: Icon(Icons.add),
+              backgroundColor: Theme.of(context).primaryColor,
+              onPressed: () {
+                print("Name: " + Global.myName);
+                print("Email: " + Global.myEmail);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AddItemScreen()));
+              },
+            )
+          : null,
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           canvasColor: Colors.black,

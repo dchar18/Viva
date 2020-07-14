@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:viva/helper/sharedPreference_functions.dart';
 import 'package:viva/screens/forgotPassword_screen.dart';
 import 'package:viva/screens/home_screen.dart';
-import 'package:viva/screens/signup_screen.dart';
 import 'package:viva/services/authentication.dart';
 import 'package:viva/services/database.dart';
 import 'package:viva/widgets/widgets.dart';

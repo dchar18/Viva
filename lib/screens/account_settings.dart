@@ -30,19 +30,26 @@ class _AccountSettingsState extends State<AccountSettings> {
                   topRight: Radius.circular(30.0),
                 ),
               ),
-              child: ListView(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                children: <Widget>[
-                  SizedBox(height: 10),
-                  settingsItem('Change username', Colors.white70, context),
-                  SizedBox(height: 10),
-                  settingsItem('Update email', Colors.white70, context),
-                  SizedBox(height: 10),
-                  settingsItem('Manage Notifications', Colors.white70, context),
-                  SizedBox(height: 10),
-                  settingsItem('Change username', Colors.white70, context),
-                  SizedBox(height: 10),
-                ],
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30.0),
+                  topRight: Radius.circular(30.0),
+                ),
+                child: ListView(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  children: <Widget>[
+                    SizedBox(height: 10),
+                    settingsItem('Change username', Colors.white70, context),
+                    SizedBox(height: 10),
+                    settingsItem('Update email', Colors.white70, context),
+                    SizedBox(height: 10),
+                    settingsItem(
+                        'Manage Notifications', Colors.white70, context),
+                    SizedBox(height: 10),
+                    settingsItem('Change username', Colors.white70, context),
+                    SizedBox(height: 10),
+                  ],
+                ),
               ),
             ),
           ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:viva/screens/chatroom_screen.dart';
+import 'package:viva/screens/chatrooms_screen.dart';
 import 'package:viva/screens/discover_screen.dart';
 import 'package:viva/screens/profile_screen.dart';
 import 'package:viva/screens/savedList_screen.dart';
@@ -7,9 +7,12 @@ import 'package:viva/screens/savedList_screen.dart';
 class Global {
   // used to store the user's name
   static String myName = "";
+  static String myEmail = "";
+  static bool chat_searching =
+      false; // used to determine if search bar should be active for chats
 
   // list of main views (widgets) that are accessed from the navigation bar
-  final List<Widget> views = [
+  static List<Widget> views = [
     DiscoverScreen(),
     SavedListScreen(),
     ChatRoomScreen(),

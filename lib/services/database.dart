@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:viva/helper/global.dart';
 
 class DatabaseMethods {
   // searches database for user that has a matching username
@@ -52,6 +53,33 @@ class DatabaseMethods {
     return await Firestore.instance
         .collection("Chatroom")
         .where("users", arrayContains: username)
+        .snapshots();
+  }
+
+  getChatRooms(String userName) async {
+    return await Firestore.instance
+        .collection("ChatRoom")
+        .where("users", arrayContains: userName)
+        .snapshots();
+  }
+
+  // itemMap contains: (item name, whether it was completed)
+  addBucketListItem(itemMap) async {
+    Firestore.instance
+        .collection('Users')
+        .document(Global.myEmail)
+        .collection('list')
+        .document(itemMap["itemName"])
+        .setData(itemMap)
+        .catchError((e) {
+      print(e.toString());
+    });
+  }
+
+  getBucketList() async {
+    return await Firestore.instance
+        .collection('Users')
+        .where('email', isEqualTo: Global.myEmail)
         .snapshots();
   }
 }

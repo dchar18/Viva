@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:viva/helper/global.dart';
 import 'package:viva/helper/sharedPreference_functions.dart';
 import 'package:viva/screens/home_screen.dart';
 import 'package:viva/screens/signin_screen.dart';
@@ -55,6 +56,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
         databaseMethods.uploadUserInfo(userInfoMap);
 
         Functions.saveUserLoggedInSharedPreference(true);
+        Functions.saveUserNameSharedPreference(usernameInput);
+        Functions.saveUserEmailSharedPreference(emailInput);
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => HomeScreen()));
       });

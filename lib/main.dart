@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:viva/helper/authenticate.dart';
+import 'package:viva/helper/global.dart';
 import 'package:viva/helper/sharedPreference_functions.dart';
 import 'package:viva/screens/home_screen.dart';
 import 'package:viva/screens/signin_screen.dart';
@@ -19,6 +20,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     getLoggedInState();
+    getUsername(); // retreive global variable data from shared preference
+    getEmail();
     super.initState();
   }
 
@@ -30,6 +33,18 @@ class _MyAppState extends State<MyApp> {
     });
   }
   // Reference 1 - end
+
+  getUsername() async {
+    await Functions.getUserNameSharedPreference().then((value) {
+      Global.myName = value;
+    });
+  }
+
+  getEmail() async {
+    await Functions.getUserEmailSharedPreference().then((value) {
+      Global.myEmail = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
