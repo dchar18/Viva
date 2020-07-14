@@ -79,7 +79,12 @@ class DatabaseMethods {
   getBucketList() async {
     return await Firestore.instance
         .collection('Users')
-        .where('email', isEqualTo: Global.myEmail)
+        .document(Global.myEmail)
+        .collection('list')
         .snapshots();
   }
+
+  // createBucketList(String itemName, itemMap) async {
+  //   await Firestore.instance.collection('Users').
+  // }
 }

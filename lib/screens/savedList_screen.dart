@@ -10,7 +10,7 @@ class SavedListScreen extends StatefulWidget {
 
 class _SavedListScreenState extends State<StatefulWidget> {
   DatabaseMethods databaseMethods = new DatabaseMethods();
-  Stream listStream;
+  Stream<QuerySnapshot> listStream;
 
   Widget savedList() {
     return StreamBuilder(
@@ -34,6 +34,36 @@ class _SavedListScreenState extends State<StatefulWidget> {
       },
     );
   }
+
+  // Future getList() async {
+  //   var firestore = Firestore.instance;
+  //   QuerySnapshot qs = await firestore
+  //       .collection("Users")
+  //       .where('name', isEqualTo: Global.myName)
+  //       .getDocuments();
+
+  //   return qs.documents;
+  // }
+
+  // Widget savedList() {
+  //   return FutureBuilder(
+  //       future: getList(),
+  //       builder: (_, snapshot) {
+  //         if (snapshot.connectionState == ConnectionState.waiting) {
+  //           return Center(
+  //             child: Text('No lists have been created'),
+  //           );
+  //         } else {
+  //           return ListView.builder(
+  //               itemCount: snapshot.data.length,
+  //               itemBuilder: (_, index) {
+  //                 return ItemTile(
+  //                     itemName: snapshot.data[index].data['itemName'],
+  //                     completed: snapshot.data[index].data['completed']);
+  //               });
+  //         }
+  //       });
+  // }
 
   @override
   void initState() {
@@ -72,8 +102,6 @@ class ItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print("Name: " + Global.myName);
-        print("Email: " + Global.myEmail);
         print("Item name: " + itemName.toString());
         print("Completed: " + completed.toString());
       },
@@ -86,7 +114,7 @@ class ItemTile extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            Global.myName,
+            itemName,
             style: TextStyle(
               fontSize: 20,
               color: Colors.white,

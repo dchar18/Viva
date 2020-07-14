@@ -50,8 +50,6 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Icon(Icons.add),
               backgroundColor: Theme.of(context).primaryColor,
               onPressed: () {
-                print("Name: " + Global.myName);
-                print("Email: " + Global.myEmail);
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => AddItemScreen()));
               },
