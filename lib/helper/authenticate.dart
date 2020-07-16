@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:viva/screens/signin_screen.dart';
-import 'package:viva/screens/signup_screen.dart';
+import 'package:viva/screens/account_screens/signin_screen.dart';
+import 'package:viva/screens/account_screens/signup_screen.dart';
 
 // Reference 1 - begin
 class Authenticate extends StatefulWidget {

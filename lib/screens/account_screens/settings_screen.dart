@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:viva/helper/authenticate.dart';
-import 'package:viva/screens/account_settings.dart';
+import 'package:viva/screens/account_screens/account_settings.dart';
 import 'package:viva/services/authentication.dart';
 import 'package:viva/widgets/widgets.dart';
 

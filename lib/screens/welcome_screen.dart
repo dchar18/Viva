@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:viva/screens/signin_screen.dart';
-import 'package:viva/screens/signup_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override

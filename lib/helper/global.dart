@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:viva/screens/chatrooms_screen.dart';
+import 'package:viva/screens/chat_screens/chatrooms_screen.dart';
 import 'package:viva/screens/discover_screen.dart';
-import 'package:viva/screens/profile_screen.dart';
+import 'package:viva/screens/account_screens/profile_screen.dart';
 import 'package:viva/screens/savedList_screen.dart';
 
 class Global {

@@ -11,7 +11,7 @@ class BucketListItem {
     completed = true;
   }
 
-  isCompleted() {
+  markCompleted() {
     return completed;
   }
 }

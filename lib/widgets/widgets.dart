@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:viva/helper/global.dart';
-import 'package:viva/screens/addItemScreen.dart';
-import 'package:viva/screens/chatrooms_screen.dart';
-import 'package:viva/screens/settings_screen.dart';
+import 'package:viva/screens/account_screens/settings_screen.dart';
 
 Widget appBarMain(BuildContext context, String title) {
   return AppBar(
     title: Text(
       title,
       style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+    ),
+    flexibleSpace: Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [
+            const Color(0x00ff00ff),
+            const Color(0x0066ffff),
+          ],
+        ),
+      ),
     ),
     elevation: 0.0,
     actions: <Widget>[
@@ -36,21 +46,6 @@ Widget appBarMain(BuildContext context, String title) {
                     // ChatRoomScreen.refresh();
                   },
                 )
-              // : (title == 'Saved Lists')
-              //     ? IconButton(
-              //         padding: EdgeInsets.symmetric(horizontal: 10),
-              //         icon: Icon(Icons.add),
-              //         iconSize: 30.0,
-              //         color: Colors.white,
-              //         onPressed: () {
-              //           Navigator.push(
-              //             context,
-              //             MaterialPageRoute(
-              //               builder: (context) => AddItemScreen(),
-              //             ),
-              //           );
-              //         },
-              //       )
               : Container(),
     ],
   );
@@ -127,7 +122,11 @@ Widget chatSearchBar(context, editingController) {
             width: 40,
             decoration: BoxDecoration(
                 gradient: LinearGradient(
-                    colors: [const Color(0x36ffffff), const Color(0x0fffffff)]),
+                  colors: [
+                    const Color(0x36ffffff),
+                    const Color(0x0fffffff),
+                  ],
+                ),
                 borderRadius: BorderRadius.circular(40)),
           ),
         ),

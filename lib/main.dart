@@ -3,8 +3,6 @@ import 'package:viva/helper/authenticate.dart';
 import 'package:viva/helper/global.dart';
 import 'package:viva/helper/sharedPreference_functions.dart';
 import 'package:viva/screens/home_screen.dart';
-import 'package:viva/screens/signin_screen.dart';
-import 'package:viva/screens/welcome_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -56,6 +54,9 @@ class _MyAppState extends State<MyApp> {
         accentColor: Colors.blue[300],
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.blue,
+      // ),
       // home: WelcomeScreen(),
       home: isLoggedIn != null
           ? (isLoggedIn ? HomeScreen() : Authenticate())

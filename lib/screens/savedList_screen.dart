@@ -80,7 +80,7 @@ class _SavedListScreenState extends State<StatefulWidget> {
     return Expanded(
       child: Container(
         width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        // padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: ClipRRect(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.0),
@@ -107,19 +107,49 @@ class ItemTile extends StatelessWidget {
       },
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 10),
-        height: 150,
+        height: 100,
+        margin: EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: Colors.blue[900],
           borderRadius: BorderRadius.circular(30),
         ),
-        child: Center(
-          child: Text(
-            itemName,
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
+        child: Row(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 15,
+                vertical: 15,
+              ),
+              child: Icon(
+                completed == true
+                    ? Icons.check_box
+                    : Icons.check_box_outline_blank,
+                color: Colors.white,
+                size: 30.0,
+              ),
             ),
-          ),
+            Container(
+              child: Text(
+                itemName,
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 10,
+                ),
+                alignment: Alignment.centerRight,
+                child: Icon(
+                  Icons.arrow_right,
+                  size: 40.0,
+                ),
+              ),
+            )
+          ],
         ),
         // child: Column(
         //   children: <Widget>[Text(itemName), Text(completed.toString())],
